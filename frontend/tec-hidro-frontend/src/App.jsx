@@ -6,7 +6,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
-  const baseUrl = 'http://localhost:3001/api/persons'
+  const baseUrl = 'https://tec-hidro.onrender.com/api/persons'
 
   useEffect(() => {
     axios.get(baseUrl).then(response => {
