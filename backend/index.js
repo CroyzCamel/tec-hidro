@@ -25,7 +25,7 @@ const personSchema = new mongoose.Schema({
 })
 
 personSchema.set('toJSON', {
-    transform:(document, returnedObject)=> {
+    transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString()
         delete returnedObject._id
         delete returnedObject.__v
@@ -34,24 +34,24 @@ personSchema.set('toJSON', {
 
 const Person = mongoose.model('Person', personSchema)
 
-app.get('/api/persons', (req, res)=> {
+app.get('/api/persons', (req, res) => {
     Person.find({}).then(persons => {
         res.json(persons)
     })
 })
 
-app.post('/api/persons', (req, res)=>{
+app.post('/api/persons', (req, res) => {
     const body = req.body
 
-    if(!body.name || !body.number){
-        return res.result.status(400).json({error: 'Nome ou número faltando'})
+    if (!body.name || !body.number) {
+        return res.result.status(400).json({ error: 'Nome ou número faltando' })
     }
 
     const person = new Person({
         name: body.name,
         number: body.number,
         entryDate: body.entryDate,
-        releaseDate: body.releaseDate,
+        releaseDate: body.releaseDate, 
     })
 
     person.save().then(savedPerson => {
