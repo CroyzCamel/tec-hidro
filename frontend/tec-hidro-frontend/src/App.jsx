@@ -61,7 +61,7 @@ const App = () => {
       <h2>Registros no Banco de Dados:</h2>
       <ul>
         {persons.map(person => (
-          <li key={person.id}>{person.name}: {person.number} {persons.entryDate} {persons.releaseDate}</li>
+          <li key={person.id}>{person.name}: {person.number} {person.entryDate} {person.releaseDate}</li>
         ))}
       </ul>
     </div>
