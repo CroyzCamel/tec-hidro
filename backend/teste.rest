@@ -1,0 +1,17 @@
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Carly Hidro",
+  "number": "010-123456"
+}
+
+###
+
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Filtro de Agua XP",
+  "number": "020-987654"
+}
