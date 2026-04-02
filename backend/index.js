@@ -20,6 +20,8 @@ mongoose.connect(url)
 const personSchema = new mongoose.Schema({
     name: String,
     number: String,
+    entryDate: String,
+    realaseDate: String,
 })
 
 personSchema.set('toJSON', {
@@ -48,6 +50,8 @@ app.post('/api/persons', (req, res)=>{
     const person = new Person({
         name: body.name,
         number: body.number,
+        entryDate: body.entryDate,
+        realaseDate: body.realaseDate,
     })
 
     person.save().then(savedPerson => {
