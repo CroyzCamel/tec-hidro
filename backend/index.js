@@ -51,7 +51,7 @@ app.post('/api/persons', (req, res)=>{
         name: body.name,
         number: body.number,
         entryDate: body.entryDate,
-        releaseDate: body.realaseDate,
+        releaseDate: body.releaseDate,
     })
 
     person.save().then(savedPerson => {
