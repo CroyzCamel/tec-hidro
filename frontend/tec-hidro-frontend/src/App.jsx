@@ -29,6 +29,8 @@ const App = () => {
       setPersons(persons.concat(response.data))
       setNewName('')
       setNewNumber('')
+      setEntryDate('')
+      setReleaseDate('')
     })
   }
 
@@ -43,18 +45,23 @@ const App = () => {
         <div>Número: <input value={newNumber} onChange={(e) => setNewNumber(e.target.value)} /></div>
         <br />
         <div>
+
           Data de Entrada: <input value={entryDate} onChange={(e) => setEntryDate(e.target.value)} />
+          <br />
         </div>
         <div>
+          <br />
           Data de Saida: <input value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} />
+          <br />
         </div>
+        <br />
         <button type="submit">Salvar no MongoDB</button>
       </form>
 
       <h2>Registros no Banco de Dados:</h2>
       <ul>
         {persons.map(person => (
-          <li key={person.id}>{person.name}: {person.number}</li>
+          <li key={person.id}>{person.name}: {person.number} {persons.entryDate} {persons.releaseDate}</li>
         ))}
       </ul>
     </div>
