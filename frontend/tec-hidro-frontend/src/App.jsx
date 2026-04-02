@@ -18,7 +18,12 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    const personObject = { name: newName, number: newNumber }
+    const personObject = {
+      name: newName,
+      number: newNumber,
+      entryDate: entryDate,
+      releaseDate: releaseDate
+    }
 
     axios.post(baseUrl, personObject).then(response => {
       setPersons(persons.concat(response.data))
