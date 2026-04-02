@@ -44,7 +44,7 @@ app.post('/api/persons', (req, res) => {
     const body = req.body
 
     if (!body.name || !body.number) {
-        return res.result.status(400).json({ error: 'Nome ou número faltando' })
+        return res.status(400).json({ error: 'Nome ou número faltando' })
     }
 
     const person = new Person({
