@@ -21,7 +21,7 @@ const personSchema = new mongoose.Schema({
     name: String,
     number: String,
     entryDate: String,
-    realaseDate: String,
+    releaseDate: String,
 })
 
 personSchema.set('toJSON', {
