@@ -46,7 +46,7 @@ const App = () => {
         <br />
         <div>
 
-          Data de Entrada: <input value={entryDate} onChange={(e) => setEntryDate(e.target.value)} />
+          Data de Entrada: <input type='date' value={entryDate} onChange={(e) => setEntryDate(e.target.value)} />
           <br />
         </div>
         <div>
@@ -61,7 +61,7 @@ const App = () => {
       <h2>Registros no Banco de Dados:</h2>
       <ul>
         {persons.map(person => (
-          <li key={person.id}>{person.name}: {person.number} {person.entryDate} {person.releaseDate}</li>
+          <li key={person.id}>{person.name}: {person.number} Entrada: {person.entryDate}  Saida{person.releaseDate}</li>
         ))}
       </ul>
     </div>
