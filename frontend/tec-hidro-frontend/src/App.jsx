@@ -51,7 +51,7 @@ const App = () => {
         </div>
         <div>
           <br />
-          Data de Saida: <input value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} />
+          Data de Saida: <input type='date'  value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} />
           <br />
         </div>
         <br />
