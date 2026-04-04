@@ -50,8 +50,8 @@ app.post('/api/persons', (req, res) => {
     const person = new Person({
         name: body.name,
         number: body.number,
-        entryDate: new Date(body.entryDate),
-        releaseDate: new Date(body.releaseDate),
+        entryDate: body.entryDate,
+        releaseDate: body.releaseDate,
     })
 
     person.save().then(savedPerson => {
