@@ -20,8 +20,8 @@ mongoose.connect(url)
 const personSchema = new mongoose.Schema({
     name: String,
     number: String,
-    entryDate: String,
-    releaseDate: String,
+    entryDate: Date,
+    releaseDate: Date,
 })
 
 personSchema.set('toJSON', {
@@ -43,7 +43,7 @@ app.get('/api/persons', (req, res) => {
 app.post('/api/persons', (req, res) => {
     const body = req.body
 
-    if (!body.name || !body.number) {
+    if (!body.name || !body.number || !body.entryDate || !body.releaseDate) {
         return res.status(400).json({ error: 'Nome ou número faltando' })
     }
 
@@ -51,7 +51,7 @@ app.post('/api/persons', (req, res) => {
         name: body.name,
         number: body.number,
         entryDate: body.entryDate,
-        releaseDate: body.releaseDate, 
+        releaseDate: body.releaseDate,
     })
 
     person.save().then(savedPerson => {
