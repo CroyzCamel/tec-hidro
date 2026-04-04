@@ -70,7 +70,7 @@ app.delete('/api/persons/:id', (req, res) => {
         })
         .catch(error => {
             console.log(error)
-            res.status(400).send({ error: 'Error ao deletar : Id mal formatado' })
+            res.status(400).send({ error: 'Erro ao deletar: ID mal formatado' })
         })
 })
 
