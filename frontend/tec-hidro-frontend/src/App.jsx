@@ -48,7 +48,7 @@ const App = () => {
   }
 
   const deletePerson = (id, name) => {
-    if (windows.confirm(`Tem certeza que deseja deletar : ${name}`)) {
+    if (window.confirm(`Tem certeza que deseja deletar : ${name}`)) {
       axios.delete(`${baseUrl}/${id}`).then(() => {
         setPersons(persons.filter(p => p.id !== id))
       })
