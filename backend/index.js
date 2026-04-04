@@ -57,6 +57,38 @@ app.post('/api/persons', (req, res) => {
     person.save().then(savedPerson => {
         res.json(savedPerson)
     })
+        .catch(error => {
+            console.log(error)
+            res.status(500).send({ error: 'Erro ao salvar os dados' })
+        })
+})
+
+app.delete('/api/persons/:id', (req, res) => {
+    Person.findByIdAndDelete(req.params.id)
+        .then(res => {
+            res.status(204).end()
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(400).send({ error: 'Error ao deletar : Id mal formatado' })
+        })
+})
+
+app.patch('/api/persons/:id', (req, res) => {
+    const body = req.body
+
+    Person.findByIdAndUpdate(req.params.id, body, { new: true })
+        .then(updatedPerson => {
+            if (updatedPerson) {
+                res.json(updatedPerson)
+            } else {
+                res.status(400).json({ error: 'Registro não encontrado' })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(400).send({ error: 'Erro ao atualizar registro' })
+        })
 })
 
 const PORT = process.env.PORT || 3001
