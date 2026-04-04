@@ -45,13 +45,12 @@ const App = () => {
         <div>Número: <input value={newNumber} onChange={(e) => setNewNumber(e.target.value)} /></div>
         <br />
         <div>
-
           Data de Entrada: <input type='date' value={entryDate} onChange={(e) => setEntryDate(e.target.value)} />
           <br />
         </div>
         <div>
           <br />
-          Data de Saida: <input type='date'  value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} />
+          Data de Saida: <input type='date' value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} />
           <br />
         </div>
         <br />
