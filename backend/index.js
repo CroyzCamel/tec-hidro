@@ -65,7 +65,7 @@ app.post('/api/persons', (req, res) => {
 
 app.delete('/api/persons/:id', (req, res) => {
     Person.findByIdAndDelete(req.params.id)
-        .then(res => {
+        .then(deletedPerson => {
             res.status(204).end()
         })
         .catch(error => {
