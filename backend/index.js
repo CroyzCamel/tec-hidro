@@ -70,6 +70,7 @@ app.delete('/api/persons/:id', (req, res) => {
         })
         .catch(error => {
             console.log(error)
+            console.log("Erro real do Mongoose:", error.message)
             res.status(400).send({ error: 'Erro ao deletar: ID mal formatado' })
         })
 })

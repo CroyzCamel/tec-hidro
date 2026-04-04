@@ -48,6 +48,9 @@ const App = () => {
   }
 
   const deletePerson = (id, name) => {
+    console.log("O React está a tentar deletar o ID:", id);
+    console.log("Tamanho do ID:", id ? id.length : 'O ID não existe!');
+
     if (window.confirm(`Tem certeza que deseja deletar : ${name}`)) {
       axios.delete(`${baseUrl}/${id}`).then(() => {
         setPersons(persons.filter(p => p.id !== id))
