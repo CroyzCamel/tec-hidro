@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
@@ -68,7 +69,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Tec-Hidro - Gerenciador</h1>
+      <h1 className="text-blue-900 bg-blue-700 w-2xs"> Tec-Hidro - Gerenciador</h1>
 
       <form onSubmit={savePerson} style={{ marginBottom: '20px', border: '1px solid #555', padding: '15px' }}>
 
@@ -78,7 +79,8 @@ const App = () => {
         <br />
         <div>Número: <input value={newNumber} onChange={(e) => setNewNumber(e.target.value)} /></div>
         <br />
-        <div>
+       <div className="bg-gray-900 py-24 sm:py-32">
+
           Data de Entrada: <input type='date' value={entryDate} onChange={(e) => setEntryDate(e.target.value)} />
           <br />
         </div>
@@ -88,7 +90,11 @@ const App = () => {
           <br />
         </div>
         <br />
-        <button type="submit">{editingId ? 'Atualizar no MongoDB' : 'Salvar no MongoDB'}</button>
+        <button
+          type="submit"
+        >
+          Salvar no MongoDB
+        </button>
 
         {editingId && (
           <button type="button" onClick={limparFormulario} >
