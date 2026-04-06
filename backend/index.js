@@ -3,11 +3,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-
+const { clerkMiddleware, requireAuth } = require('@clerk/express')
 const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use(clerkMiddleware())
 
 const url = process.env.MONGODB_URI
 console.log('conectando a', url)
@@ -40,7 +41,7 @@ app.get('/api/persons', (req, res) => {
     })
 })
 
-app.post('/api/persons', (req, res) => {
+app.post('/api/persons', requireAuth(), (req, res) => {
     const body = req.body
 
     if (!body.name || !body.number || !body.entryDate || !body.releaseDate) {
@@ -63,7 +64,7 @@ app.post('/api/persons', (req, res) => {
         })
 })
 
-app.delete('/api/persons/:id', (req, res) => {
+app.delete('/api/persons/:id', requireAuth(), (req, res) => {
     Person.findByIdAndDelete(req.params.id)
         .then(deletedPerson => {
             res.status(204).end()
@@ -72,11 +73,11 @@ app.delete('/api/persons/:id', (req, res) => {
             console.log(error)
             console.log("Erro real do Mongoose:", error.message)
             res.status(400).send({ error: 'Erro ao deletar: ID mal formatado' })
-            
+
         })
 })
 
-app.patch('/api/persons/:id', (req, res) => {
+app.patch('/api/persons/:id', requireAuth(), (req, res) => {
     const body = req.body
 
     Person.findByIdAndUpdate(req.params.id, body, { new: true })
