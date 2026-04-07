@@ -204,7 +204,7 @@ const App = () => {
 
                   <div className="space-y-4 mb-6">
                     <div>
-                      <label className="block text-sm font-semibold text-slate-600 mb-1">Nome</label>
+                      <label className="block text-sm font-semibold text-slate-600 mb-1">Cliente</label>
                       <input
                         className="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-slate-50 focus:bg-white"
                         placeholder="Atac. Fortaleza..."
@@ -215,7 +215,7 @@ const App = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-slate-600 mb-1">Número / Código</label>
+                      <label className="block text-sm font-semibold text-slate-600 mb-1">Tipo de Sistema</label>
                       <input
                         className="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-slate-50 focus:bg-white"
                         placeholder="Ex: POT / REF / AGE/ SGV "
@@ -287,7 +287,7 @@ const App = () => {
                           <div className="flex justify-between items-start mb-3">
                             <div>
                               <strong className="text-lg text-slate-800 block leading-tight">{person.name}</strong>
-                              <span className="text-sm text-slate-500 font-medium">Cód: {person.number}</span>
+                              <span className="text-sm text-slate-500 font-medium">Tipo de sistema: {person.number}</span>
                             </div>
                           </div>
 
