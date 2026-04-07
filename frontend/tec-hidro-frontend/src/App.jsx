@@ -16,7 +16,7 @@ const App = () => {
 
   const [editingId, setEditingId] = useState(null)
 
-  const baseUrl = 'https://tec-hidro.vercel.app/api/persons'
+  const baseUrl = 'https://tec-hidro.onrender.com/api/persons'
 
   useEffect(() => {
     axios.get(baseUrl).then(response => {
