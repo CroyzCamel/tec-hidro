@@ -3,7 +3,7 @@ import './App.css'
 import { useAuth, SignedIn, SignedOut, SignInButton, SignOutButton, UserButton } from '@clerk/clerk-react'
 import clientService from './services/clients'
 import ClientList from './components/ClientList'
-import ClientForm from './components/Clientform'
+import ClientForm from './components/ClientForm'
 
 const App = () => {
 
