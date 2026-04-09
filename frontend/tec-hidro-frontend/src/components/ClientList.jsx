@@ -3,6 +3,8 @@ import React from 'react'
 const ClientList = ({ persons, startEdit, deletePerson, dataParaTela }) => {
   return (
     <div className="bg-white shadow-sm rounded-xl border border-slate-200 overflow-hidden">
+      
+      {/* Cabeçalho da Tabela */}
       <div className="p-6 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
         <h2 className="text-xl font-bold text-slate-800">Registros Ativos</h2>
         <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">
@@ -10,53 +12,72 @@ const ClientList = ({ persons, startEdit, deletePerson, dataParaTela }) => {
         </span>
       </div>
 
-      <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {persons.map(person => (
-            <div key={person.id} className="bg-white border border-slate-200 p-5 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
+      {/* Container com scroll horizontal (Salva a vida no celular!) */}
+      <div className="overflow-x-auto">
+        <table className="w-full text-left text-sm text-slate-600">
+          
+          {/* Títulos das Colunas */}
+          <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+            <tr>
+              <th className="px-6 py-4">Cliente</th>
+              <th className="px-6 py-4">Tipo</th>
+              <th className="px-6 py-4">Entrada</th>
+              <th className="px-6 py-4">Saída</th>
+              <th className="px-6 py-4 text-center">Ações</th>
+            </tr>
+          </thead>
+          
+          {/* Corpo da Tabela (Linhas) */}
+          <tbody className="divide-y divide-slate-100">
+            {persons.map(person => (
+              <tr 
+                key={person.id} 
+                className="hover:bg-blue-50 transition-colors even:bg-slate-50/50"
+              >
+                {/* Cliente */}
+                <td className="px-6 py-4 font-semibold text-slate-800">
+                  {person.name}
+                </td>
+                
+                {/* Tipo (com um visual de "etiqueta") */}
+                <td className="px-6 py-4">
+                  <span className="bg-slate-200 text-slate-700 px-2.5 py-1 rounded-md text-xs font-bold">
+                    {person.number}
+                  </span>
+                </td>
+                
+                {/* Datas */}
+                <td className="px-6 py-4">{dataParaTela(person.entryDate)}</td>
+                <td className="px-6 py-4">{dataParaTela(person.releaseDate)}</td>
+                
+                {/* Botões de Ação */}
+                <td className="px-6 py-4">
+                  <div className="flex justify-center gap-3">
+                    <button
+                      onClick={() => startEdit(person)}
+                      className="text-blue-600 hover:text-blue-800 font-semibold hover:underline"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      onClick={() => deletePerson(person.id, person.name)}
+                      className="text-red-600 hover:text-red-800 font-semibold hover:underline"
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-              <div className="flex justify-between items-start mb-3">
-                <div>
-                  <strong className="text-lg text-slate-800 block leading-tight">{person.name}</strong>
-                  <span className="text-sm text-slate-500 font-medium">Tipo de sistema: {person.number}</span>
-                </div>
-              </div>
-
-              <div className="bg-slate-50 p-3 rounded-lg text-sm text-slate-600 mb-4 border border-slate-100">
-                <div className="flex justify-between mb-1">
-                  <span className="font-semibold text-slate-700">Entrada:</span>
-                  <span>{dataParaTela(person.entryDate)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold text-slate-700">Saída:</span>
-                  <span>{dataParaTela(person.releaseDate)}</span>
-                </div>
-              </div>
-
-              <div className="flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-                <button
-                  onClick={() => startEdit(person)}
-                  className="flex-1 bg-slate-100 text-slate-700 hover:bg-blue-100 hover:text-blue-700 py-1.5 rounded-lg font-semibold transition-colors text-sm"
-                >
-                  Editar
-                </button>
-                <button
-                  onClick={() => deletePerson(person.id, person.name)}
-                  className="flex-1 bg-slate-100 text-slate-700 hover:bg-red-100 hover:text-red-700 py-1.5 rounded-lg font-semibold transition-colors text-sm"
-                >
-                  Excluir
-                </button>
-              </div>
-
-            </div>
-          ))}
-
-          {persons.length === 0 && (
-            <div className="col-span-full text-center py-10 text-slate-500">
-              Nenhum registro encontrado no banco de dados.
-            </div>
-          )}
-        </div>
+        {/* Mensagem se estiver vazio */}
+        {persons.length === 0 && (
+          <div className="text-center py-10 text-slate-500">
+            Nenhum registro encontrado no banco de dados.
+          </div>
+        )}
       </div>
     </div>
   )
