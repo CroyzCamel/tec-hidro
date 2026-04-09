@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = import.meta.env.VITE_API_URL || 'https://tec-hidro.onrender.com/api/persons'g
+const baseUrl = import.meta.env.VITE_API_URL || 'https://tec-hidro.onrender.com/api/persons'
 
 const getAll = async () => {
     const response = await axios.get(baseUrl)
